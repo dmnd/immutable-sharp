@@ -1,8 +1,8 @@
 "use strict";
 
-const Immutable = require("immutable");
-const invariant = require("react/lib/invariant");
-const NOT_SET = "@@NOT_SET@@";
+var Immutable = require("immutable");
+var invariant = require("react/lib/invariant");
+var NOT_SET = "@@NOT_SET@@";
 
 // TODO(dmnd): These don't work well because get is called by internal immutable
 // code
@@ -26,9 +26,9 @@ const NOT_SET = "@@NOT_SET@@";
 
 
 function fetch(k) {
-  invariant(arguments.length === 1, `Too many arguments! ${arguments[1]}`);
-  const result = this.get(k, NOT_SET);
-  invariant(result !== NOT_SET, `No value at ${k}`);
+  invariant(arguments.length === 1, "Too many arguments! " + arguments[1]);
+  var result = this.get(k, NOT_SET);
+  invariant(result !== NOT_SET, "No value at " + k);
   return result;
 }
 
@@ -39,9 +39,9 @@ Immutable.Record.prototype.fetch = fetch;
 
 
 function fetchIn(searchKeyPath) {
-  invariant(arguments.length === 1, `Too many arguments! ${arguments[1]}`);
-  const result = this.getIn(searchKeyPath, NOT_SET);
-  invariant(result !== NOT_SET, `No value at ${searchKeyPath}`);
+  invariant(arguments.length === 1, "Too many arguments! " + arguments[1]);
+  var result = this.getIn(searchKeyPath, NOT_SET);
+  invariant(result !== NOT_SET, "No value at " + searchKeyPath);
   return result;
 }
 
