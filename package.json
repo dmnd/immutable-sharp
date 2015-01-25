@@ -4,7 +4,7 @@
   "description": "A sharper Immutable that raises instead of returning undefined",
   "main": "dist/index.js",
   "files": [
-    "index.js"
+    "dist/index.js"
   ],
   "author": {
     "name": "Desmond Brand",
