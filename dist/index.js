@@ -28,7 +28,7 @@ var NOT_SET = "@@NOT_SET@@";
 function fetch(k) {
   invariant(arguments.length === 1, "Too many arguments! " + arguments[1]);
   var result = this.get(k, NOT_SET);
-  invariant(result !== NOT_SET, "No value at " + k);
+  invariant(result !== NOT_SET, "No value at " + k + " in " + this);
   return result;
 }
 
@@ -41,7 +41,7 @@ Immutable.Record.prototype.fetch = fetch;
 function fetchIn(searchKeyPath) {
   invariant(arguments.length === 1, "Too many arguments! " + arguments[1]);
   var result = this.getIn(searchKeyPath, NOT_SET);
-  invariant(result !== NOT_SET, "No value at " + searchKeyPath);
+  invariant(result !== NOT_SET, "No value at " + searchKeyPath + " in " + this);
   return result;
 }
 
