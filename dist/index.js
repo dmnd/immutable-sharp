@@ -1,6 +1,6 @@
 "use strict";
 
-var Immutable = require("immutable");
+var I = require("immutable");
 var invariant = require("react/lib/invariant");
 var NOT_SET = "@@NOT_SET@@";
 
@@ -12,8 +12,8 @@ var NOT_SET = "@@NOT_SET@@";
 //   return this.get(k);
 // };
 //
-// Immutable.List.prototype.get = get;
-// Immutable.Map.prototype.get = get;
+// I.List.prototype.get = get;
+// I.Map.prototype.get = get;
 //
 //
 // var getIn = function(keyPath, notSetValue) {
@@ -21,8 +21,8 @@ var NOT_SET = "@@NOT_SET@@";
 //   return this.getIn(keyPath);
 // };
 //
-// Immutable.List.prototype.getIn = getIn;
-// Immutable.Map.prototype.getIn = getIn;
+// I.List.prototype.getIn = getIn;
+// I.Map.prototype.getIn = getIn;
 
 
 function fetch(k) {
@@ -32,10 +32,10 @@ function fetch(k) {
   return result;
 }
 
-Immutable.List.prototype.fetch = fetch;
-Immutable.Map.prototype.fetch = fetch;
-Immutable.Seq.prototype.fetch = fetch;
-Immutable.Record.prototype.fetch = fetch;
+I.List.prototype.fetch = fetch;
+I.Map.prototype.fetch = fetch;
+I.Seq.prototype.fetch = fetch;
+I.Record.prototype.fetch = fetch;
 
 
 function fetchIn(searchKeyPath) {
@@ -45,10 +45,10 @@ function fetchIn(searchKeyPath) {
   return result;
 }
 
-Immutable.List.prototype.fetchIn = fetchIn;
-Immutable.Map.prototype.fetchIn = fetchIn;
-Immutable.Seq.prototype.fetchIn = fetchIn;
-Immutable.Record.prototype.fetchIn = fetchIn;
+I.List.prototype.fetchIn = fetchIn;
+I.Map.prototype.fetchIn = fetchIn;
+I.Seq.prototype.fetchIn = fetchIn;
+I.Record.prototype.fetchIn = fetchIn;
 
 
-module.exports = Immutable;
+module.exports = I;
