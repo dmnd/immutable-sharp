@@ -1,8 +1,15 @@
 "use strict";
 
 var I = require("immutable");
-var invariant = require("react/lib/invariant");
 var NOT_SET = "@@NOT_SET@@";
+
+function invariant(condition, messageFn) {
+  if (!condition) {
+    var error = new Error("Invariant Violation: " + messageFn());
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
 
 // TODO(dmnd): These don't work well because get is called by internal immutable
 // code
@@ -26,9 +33,15 @@ var NOT_SET = "@@NOT_SET@@";
 
 
 function fetch(k) {
-  invariant(arguments.length === 1, "Too many arguments! " + arguments[1]);
+  var _this = this;
+  var _arguments = arguments;
+  invariant(arguments.length === 1, function () {
+    return "Too many arguments! " + _arguments[1];
+  });
   var result = this.get(k, NOT_SET);
-  invariant(result !== NOT_SET, "No value at " + k + " in " + this);
+  invariant(result !== NOT_SET, function () {
+    return "No value " + k + " in " + _this;
+  });
   return result;
 }
 
@@ -39,9 +52,15 @@ I.Record.prototype.fetch = fetch;
 
 
 function fetchIn(searchKeyPath) {
-  invariant(arguments.length === 1, "Too many arguments! " + arguments[1]);
+  var _this2 = this;
+  var _arguments2 = arguments;
+  invariant(arguments.length === 1, function () {
+    return "Too many arguments! " + _arguments2[1];
+  });
   var result = this.getIn(searchKeyPath, NOT_SET);
-  invariant(result !== NOT_SET, "No value at " + searchKeyPath + " in " + this);
+  invariant(result !== NOT_SET, function () {
+    return "No value at " + searchKeyPath + " in " + _this2;
+  });
   return result;
 }
 
