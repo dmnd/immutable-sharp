@@ -5,7 +5,7 @@ const NOT_SET = "@@NOT_SET@@";
 
 function invariant(condition, messageFn) {
   if (!condition) {
-    var error = new Error(`Invariant Violation: ${messageFn()}`);
+    let error = new Error(`Invariant Violation: ${messageFn()}`);
     error.framesToPop = 1; // we don't care about invariant's own frame
     throw error;
   }
