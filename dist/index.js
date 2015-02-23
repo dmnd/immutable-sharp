@@ -70,4 +70,31 @@ I.Seq.prototype.fetchIn = fetchIn;
 I.Record.prototype.fetchIn = fetchIn;
 
 
+function _updateQuery(item, keys, i, fn) {
+  if (i === keys.length) {
+    return fn(item);
+  }
+
+  var recur = function (x) {
+    return _updateQuery(x, keys, i + 1, fn);
+  };
+  if (keys[i] === "*") {
+    return item.map(recur);
+  } else {
+    return item.update(keys[i], recur);
+  }
+}
+
+
+function updateQuery(keys, fn) {
+  return _updateQuery(this, keys, 0, fn);
+}
+
+
+I.List.prototype.updateQuery = updateQuery;
+I.Map.prototype.updateQuery = updateQuery;
+I.Seq.prototype.updateQuery = updateQuery;
+I.Record.prototype.updateQuery = updateQuery;
+
+
 module.exports = I;
